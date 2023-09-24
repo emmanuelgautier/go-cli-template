@@ -1,0 +1,6 @@
+FROM gcr.io/distroless/static-debian11:nonroot
+
+COPY --chown=nonroot:nonroot go-cli-template /usr/bin/go-cli-template
+
+ENTRYPOINT ["go-cli-template"]
+CMD ["go-cli-template"]

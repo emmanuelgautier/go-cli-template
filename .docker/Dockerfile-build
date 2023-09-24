@@ -1,0 +1,22 @@
+FROM golang:1.21-bullseye AS builder
+
+WORKDIR /go/src/github.com/emmanuelgautier/go-cli-template
+
+COPY go.mod go.mod
+COPY go.sum go.sum
+
+ENV CGO_ENABLED 0
+ENV GO111MODULE on
+
+RUN go mod download
+
+COPY . .
+
+RUN go build -o /usr/bin/go-cli-template .
+
+FROM gcr.io/distroless/static-debian11:nonroot AS runner
+
+COPY --from=builder --chown=nonroot:nonroot /usr/bin/go-cli-template /usr/bin/go-cli-template
+
+ENTRYPOINT ["go-cli-template"]
+CMD ["go-cli-template"]

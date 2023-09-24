@@ -1,0 +1,82 @@
+before:
+  hooks:
+    - go mod tidy
+    - go generate ./...
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+
+archives:
+  - format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end }}
+    # use zip for windows archives
+    format_overrides:
+      - goos: windows
+        format: zip
+
+checksum:
+  name_template: "checksums.txt"
+
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+
+# brews:
+#   - name: "{{ .ProjectName }}"
+#     description: "go-cli-template"
+#     license: "MIT"
+#     repository:
+#       owner: emmanuelgautier
+#       name: "{{ .ProjectName }}"
+#     goarm: 6
+#     test: |
+#       system "#{bin}/{{ .ProjectName }} help"
+#     homepage: https://github.com/emmanuelgautier/go-cli-template
+#     commit_author:
+#       name: emmanuelgautier
+#       email: youremail@domain.tld
+
+# nfpms:
+#   - package_name: "{{ .ProjectName }}"
+#     vendor: Emmanuel Gautier
+#     homepage: https://github.com/emmanuelgautier/go-cli-template
+#     maintainer: Emmanuel Gautier <youremail@domain.tld>
+#     description: ""
+#     license: "MIT"
+#     formats:
+#       - apk
+#       - deb
+#       - rpm
+#       - termux.deb
+#       - archlinux
+
+snapcrafts:
+  - title: go-cli-template
+    publish: true
+    summary: "go-cli-template"
+    description: "go-cli-template"
+    license: MIT
+
+dockers:
+  - image_templates:
+      - "ghcr.io/emmanuelgautier/go-cli-template:{{ .Tag }}"
+      - "ghcr.io/emmanuelgautier/go-cli-template:v{{ .Major }}"
+      - "ghcr.io/emmanuelgautier/go-cli-template:v{{ .Major }}.{{ .Minor }}"
+      - "ghcr.io/emmanuelgautier/go-cli-template:latest"
+    dockerfile: .docker/Dockerfile-goreleaser
