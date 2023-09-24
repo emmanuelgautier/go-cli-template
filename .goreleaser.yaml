@@ -37,41 +37,12 @@ changelog:
       - "^docs:"
       - "^test:"
 
-# brews:
-#   - name: "{{ .ProjectName }}"
+# snapcrafts:
+#   - title: go-cli-template
+#     publish: true
+#     summary: "go-cli-template"
 #     description: "go-cli-template"
-#     license: "MIT"
-#     repository:
-#       owner: emmanuelgautier
-#       name: "{{ .ProjectName }}"
-#     goarm: 6
-#     test: |
-#       system "#{bin}/{{ .ProjectName }} help"
-#     homepage: https://github.com/emmanuelgautier/go-cli-template
-#     commit_author:
-#       name: emmanuelgautier
-#       email: youremail@domain.tld
-
-# nfpms:
-#   - package_name: "{{ .ProjectName }}"
-#     vendor: Emmanuel Gautier
-#     homepage: https://github.com/emmanuelgautier/go-cli-template
-#     maintainer: Emmanuel Gautier <youremail@domain.tld>
-#     description: ""
-#     license: "MIT"
-#     formats:
-#       - apk
-#       - deb
-#       - rpm
-#       - termux.deb
-#       - archlinux
-
-snapcrafts:
-  - title: go-cli-template
-    publish: true
-    summary: "go-cli-template"
-    description: "go-cli-template"
-    license: MIT
+#     license: MIT
 
 dockers:
   - image_templates:
