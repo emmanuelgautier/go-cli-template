@@ -1,5 +1,11 @@
 # Go CLI Template
 
+<p align="left">
+    <a href="https://github.com/emmanuelgautier/go-cli-template/actions/workflows/ci.yml"><img src="https://github.com/emmanuelgautier/go-cli-template/actions/workflows/ci.yml/badge.svg?branch=main&event=push" alt="CI Tasks for Go Cli template"></a>
+    <a href="https://goreportcard.com/report/github.com/emmanuelgautier/go-cli-template"><img src="https://goreportcard.com/badge/github.com/emmanuelgautier/go-cli-template" alt="Go Report Card"></a>
+    <a href="https://pkg.go.dev/github.com/emmanuelgautier/go-cli-template"><img src="https://pkg.go.dev/badge/www.github.com/emmanuelgautier/go-cli-template" alt="PkgGoDev"></a>
+</p>
+
 This is a simple Go CLI (Command Line Interface) template that you can use as a starting point for building your own command-line applications in Go. It provides a basic structure and some common features to help you get started quickly.
 
 ## Features
