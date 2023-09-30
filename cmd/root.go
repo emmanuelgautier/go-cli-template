@@ -38,8 +38,6 @@ func NewRootCmd() (cmd *cobra.Command) {
 func Execute() {
 	c := NewRootCmd()
 
-	c.AddCommand()
-
 	if err := c.Execute(); err != nil {
 		os.Exit(1)
 	}
