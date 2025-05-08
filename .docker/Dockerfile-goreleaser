@@ -1,4 +1,4 @@
-FROM gcr.io/distroless/static-debian11:nonroot
+FROM gcr.io/distroless/static-debian12:nonroot
 
 COPY --chown=nonroot:nonroot go-cli-template /usr/bin/go-cli-template
 
